@@ -97,6 +97,7 @@ def plantarse():
         print (f"Has empatado al blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
 
 def juego():
+    print(f"Quedan {numcartas} cartas")
     print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
     eleccion=int(input())
     if eleccion == 1:
