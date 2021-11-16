@@ -14,4 +14,5 @@ cartas = {
     chr(0x1f0ab): 10, 
     chr(0x1f0ad): 10, 
     chr(0x1f0ae): 10, 
-} 
+}
+print(cartas)
