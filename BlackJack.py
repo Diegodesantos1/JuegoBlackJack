@@ -74,6 +74,7 @@ def cambiar_cartas():
     seleccion_cambio=int(input())
     Cartasquellevas.pop(seleccion_cambio)
     tomar_carta()
+    juego()
 
 def cambiar_cartas_banca():
     seleccion_cambio=random.randint(0,2)
@@ -117,6 +118,13 @@ def juego():
             juego()
     if eleccion == 3:
         plantarse()
+    eleccion_banca=random.randint(1,2)
+    if eleccion_banca == 1:
+        banca_tomar_carta()
+    elif eleccion_banca == 2:
+        print("Ha pasado turno la banca")
+
+
 
 print("Comienza el blackjack")
 tomar_2carta()
