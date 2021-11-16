@@ -21,13 +21,17 @@ Cartasquellevas=[]
 Cartasquellevabanca=[]
 numcartas=52
 def tomar_carta():
-    global numcartas
-    numerorandom= random.randint (2, 11)
-    carta_elegida=cartas.pop(numerorandom)
-    print(f"Tienes esta carta: {carta_elegida}")
-    Cartasquellevas.append(carta_elegida)
-    numcartas-=1
-    print (Cartasquellevas)
+    if cartas ==0:
+        print("Te has quedado sin carta")
+        plantarse()
+    else:
+        global numcartas
+        numerorandom= random.randint (2, 11)
+        carta_elegida=cartas.pop(numerorandom)
+        print(f"Tienes esta carta: {carta_elegida}")
+        Cartasquellevas.append(carta_elegida)
+        numcartas-=1
+        print (Cartasquellevas)
 
 def tomar_2carta():
     global numcartas
@@ -71,6 +75,10 @@ def cambiar_cartas():
     Cartasquellevas.pop(seleccion_cambio)
     tomar_carta()
 
+def cambiar_cartas_banca():
+    seleccion_cambio=random.randint(0,2)
+    Cartasquellevabanca.pop(seleccion_cambio)
+    banca_tomar_carta()
 
 
 
