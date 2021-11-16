@@ -31,11 +31,11 @@ def tomar_carta():
 
 def tomar_2carta():
     global numcartas
-    numerorandom= random.randint (2, 11)
+    numerorandom= random.randint (1, len(cartas))
     carta_elegida=cartas.pop(numerorandom)
     print(f"Tienes esta carta: {carta_elegida}")
     Cartasquellevas.append(carta_elegida)
-    numerorandom= random.randint (2, 11)
+    numerorandom= random.randint (1, len(cartas))
     carta_elegida=cartas.pop(numerorandom)
     print(f"Tienes esta carta: {carta_elegida}")
     Cartasquellevas.append(carta_elegida)
@@ -45,7 +45,7 @@ def banca_tomar_carta():
     global numcartas
     global puntuacion_banca
     puntuacion_banca=0
-    numerorandom= random.randint (2, 11)
+    numerorandom= random.randint (1, len(cartas))
     puntuacion_banca=puntuacion_banca + numerorandom
     carta_elegida_banca=cartas.pop(numerorandom)
     Cartasquellevabanca.append(carta_elegida_banca)
@@ -55,7 +55,7 @@ def banca_tomar_2carta():
     global numcartas
     global puntuacion_banca
     puntuacion_banca=0
-    numerorandom= random.randint (2, 11)
+    numerorandom= random.randint (1, len(cartas))
     puntuacion_banca=puntuacion_banca + numerorandom
     carta_elegida_banca=cartas.pop(numerorandom)
     Cartasquellevabanca.append(carta_elegida_banca)
@@ -64,6 +64,14 @@ def banca_tomar_2carta():
     carta_elegida_banca=cartas.pop(numerorandom)
     Cartasquellevabanca.append(carta_elegida_banca)
     numcartas-=2
+
+def cambiar_cartas():
+    print("¿Qué carta quieres cambiar? Pon la posición 0, 1, 2 de la carta que desee eliminar")
+    seleccion_cambio=int(input())
+    Cartasquellevas.pop(seleccion_cambio)
+    tomar_carta()
+
+
 
 
 def pasar_turno():
@@ -84,15 +92,18 @@ def juego():
     print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
     eleccion=int(input())
     if eleccion == 1:
-        print("Cojo carta")
+        print()
     elif eleccion == 2:
-        pasar_turno()
+        print()
     elif eleccion == 3:
         plantarse()
     while eleccion != 3 or cartas!=0:
         if eleccion == 1:
-            tomar_carta()
-            juego()
+            if len(Cartasquellevas) == 3:
+                cambiar_cartas()
+            else:
+                tomar_carta()
+                juego()
         elif eleccion == 2:
             pasar_turno()
             juego()
