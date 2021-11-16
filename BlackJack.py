@@ -19,12 +19,12 @@ cartas=[11, 11, 11, 11, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6,
 Cartasquellevas=[]
 Cartasquellevabanca=[]
 numcartas=52
-
-def tomar_carta():
+def comprobarcartas():
     if cartas ==0:
         print("Te has quedado sin cartas")
         plantarse()
-    else:
+
+def tomar_carta():
         global numcartas
         numerorandom= random.randint (1, len(cartas))
         carta_elegida=cartas.pop(numerorandom)
