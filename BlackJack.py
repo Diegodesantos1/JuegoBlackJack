@@ -18,6 +18,7 @@ cartas = {
 listacartas=[cartas]
 print(listacartas)
 def tomar_carta():
+    global tu_puntuacion
     tu_puntuacion=0
     numerorandom= random.randint (2, 11)
     carta_elegida=cartas.pop(numerorandom)
@@ -27,6 +28,7 @@ def tomar_carta():
     print(tu_puntuacion)
 
 def banca_tomar_carta():
+    global puntuacion_banca
     puntuacion_banca=0
     numerorandom= random.randint (2, 11)
     carta_elegida=cartas.pop(numerorandom)
