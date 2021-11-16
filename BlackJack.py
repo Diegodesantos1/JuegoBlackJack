@@ -15,23 +15,22 @@ cartas = {
     10:chr(0x1f0ad), 
     10:chr(0x1f0ae), 
 }
-numcartas=52
 cartas=[11, 11, 11, 11, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10 ,10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
 Cartasquellevas=[]
 Cartasquellevabanca=[]
 numcartas=52
 def tomar_carta():
     if cartas ==0:
-        print("Te has quedado sin carta")
+        print("Te has quedado sin cartas")
         plantarse()
     else:
         global numcartas
-        numerorandom= random.randint (2, 11)
+        numerorandom= random.randint (1, len(cartas))
         carta_elegida=cartas.pop(numerorandom)
         print(f"Tienes esta carta: {carta_elegida}")
         Cartasquellevas.append(carta_elegida)
         numcartas-=1
-        print (Cartasquellevas)
+        print(Cartasquellevas)
 
 def tomar_2carta():
     global numcartas
@@ -46,25 +45,22 @@ def tomar_2carta():
     numcartas -= 2
 
 def banca_tomar_carta():
-    global numcartas
-    global puntuacion_banca
-    puntuacion_banca=0
-    numerorandom= random.randint (1, len(cartas))
-    puntuacion_banca=puntuacion_banca + numerorandom
-    carta_elegida_banca=cartas.pop(numerorandom)
-    Cartasquellevabanca.append(carta_elegida_banca)
-    numcartas-= 1
+    if cartas ==0:
+        print("Te has quedado sin cartas")
+        plantarse()
+    else:
+        global numcartas
+        numerorandom= random.randint (1, len(cartas))
+        carta_elegida_banca=cartas.pop(numerorandom)
+        Cartasquellevabanca.append(carta_elegida_banca)
+        numcartas-= 1
 
 def banca_tomar_2carta():
     global numcartas
-    global puntuacion_banca
-    puntuacion_banca=0
     numerorandom= random.randint (1, len(cartas))
-    puntuacion_banca=puntuacion_banca + numerorandom
     carta_elegida_banca=cartas.pop(numerorandom)
     Cartasquellevabanca.append(carta_elegida_banca)
     numerorandom= random.randint (2, 11)
-    puntuacion_banca=puntuacion_banca + numerorandom
     carta_elegida_banca=cartas.pop(numerorandom)
     Cartasquellevabanca.append(carta_elegida_banca)
     numcartas-=2
@@ -88,15 +84,17 @@ def pasar_turno():
 
 def plantarse():
     tu_puntuacion=sum(Cartasquellevas)
+    puntuacion_banca=sum(Cartasquellevabanca)
     print ("Me planto")
     if puntuacion_banca > 21 and tu_puntuacion < 21:
-        print ("Has ganado el blackjack")
+        print (f"Has ganado el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
     elif tu_puntuacion > 21:
-        print("Perdiste")
-    elif tu_puntuacion < puntuacion_banca:
-        print ("Perdiste")
+        print (f"Has perdido el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
+    elif tu_puntuacion < puntuacion_banca < 21:
+        print (f"Has perdido el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
     elif tu_puntuacion > puntuacion_banca and tu_puntuacion < 21:
-        print("Ganaste")
+        print (f"Has ganado el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
+
 def juego():
     print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
     eleccion=int(input())
@@ -120,9 +118,13 @@ def juego():
         plantarse()
     eleccion_banca=random.randint(1,2)
     if eleccion_banca == 1:
-        banca_tomar_carta()
+        if len(Cartasquellevabanca) == 3:
+            cambiar_cartas_banca()
+        else:
+            banca_tomar_carta()
+            juego()
     elif eleccion_banca == 2:
-        print("Ha pasado turno la banca")
+        ("Ha pasado turno la banca")
 
 
 
