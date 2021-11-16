@@ -15,7 +15,20 @@ cartas = {
     10:chr(0x1f0ad), 
     10:chr(0x1f0ae), 
 }
+global tomar_carta
+def tomar_carta():
+    num_cartas=0
+    puntuacion=0
+    total = 21
+    global carta_elegida
+    numerorandom= random.randint (2, 11)
+    carta_elegida=cartas.pop(numerorandom)
+    print(f"Tienes esta carta: {carta_elegida}")
+    num_cartas=+1
+    print(num_cartas)
+    print(puntuacion)
+tomar_carta()
 
-numerorandom= random.randint (2, 11)
-cartas_elegidas=cartas.pop(numerorandom)
-print(f"Tienes esta carta: {cartas_elegidas}")
+#while num_cartas < 4 and puntuacion != 21:
+#tomar_carta()
+
