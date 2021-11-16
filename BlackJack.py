@@ -89,10 +89,12 @@ def plantarse():
         print (f"Has ganado el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
     elif tu_puntuacion > 21:
         print (f"Has perdido el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
-    elif tu_puntuacion < puntuacion_banca < 21:
+    elif tu_puntuacion < puntuacion_banca <= 21:
         print (f"Has perdido el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
-    elif tu_puntuacion > puntuacion_banca and tu_puntuacion < 21:
+    elif tu_puntuacion > puntuacion_banca and tu_puntuacion <= 21:
         print (f"Has ganado el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
+    elif tu_puntuacion == puntuacion_banca:
+        print (f"Has empatado al blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
 
 def juego():
     print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
@@ -113,8 +115,6 @@ def juego():
         elif eleccion == 2:
             pasar_turno()
             juego()
-    if eleccion == 3:
-        plantarse()
     eleccion_banca=random.randint(4,5)
     if eleccion_banca == 4:
         if len(Cartasquellevabanca) == 3:
