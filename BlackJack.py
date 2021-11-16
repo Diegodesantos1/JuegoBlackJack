@@ -19,6 +19,7 @@ cartas=[11, 11, 11, 11, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6,
 Cartasquellevas=[]
 Cartasquellevabanca=[]
 numcartas=52
+
 def tomar_carta():
     if cartas ==0:
         print("Te has quedado sin cartas")
@@ -77,8 +78,6 @@ def cambiar_cartas_banca():
     Cartasquellevabanca.pop(seleccion_cambio)
     banca_tomar_carta()
 
-
-
 def pasar_turno():
     print("Paso turno")
 
@@ -116,17 +115,15 @@ def juego():
             juego()
     if eleccion == 3:
         plantarse()
-    eleccion_banca=random.randint(1,2)
-    if eleccion_banca == 1:
+    eleccion_banca=random.randint(4,25)
+    if eleccion_banca == 4:
         if len(Cartasquellevabanca) == 3:
             cambiar_cartas_banca()
         else:
             banca_tomar_carta()
             juego()
-    elif eleccion_banca == 2:
-        ("Ha pasado turno la banca")
-
-
+    elif eleccion_banca == 5:
+        print("Ha pasado turno la banca")
 
 print("Comienza el blackjack")
 tomar_2carta()
