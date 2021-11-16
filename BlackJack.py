@@ -15,10 +15,12 @@ cartas = {
     10:chr(0x1f0ad), 
     10:chr(0x1f0ae), 
 }
+listacartas=[cartas]
+print(listacartas)
 global tomar_carta
 def tomar_carta():
     num_cartas=0
-    puntuacion=0
+    tu_puntuacion=0
     total = 21
     global carta_elegida
     numerorandom= random.randint (2, 11)
@@ -26,9 +28,21 @@ def tomar_carta():
     print(f"Tienes esta carta: {carta_elegida}")
     num_cartas=+1
     print(num_cartas)
-    print(puntuacion)
+    print(tu_puntuacion)
 tomar_carta()
 
-#while num_cartas < 4 and puntuacion != 21:
-#tomar_carta()
+def pasar_turno():
+    print("Paso turno")
+
+def plantarse():
+    print ("Me planto")
+    if puntuacion_banca > 21 and tu_puntuacion < 21:
+        print ("Has ganado el blackjack")
+    elif tu_puntacion > 21:
+        print("Perdiste")
+    elif tu_puntuacion < puntuacion_banca:
+        print ("Perdiste")
+    elif tu_puntuacion > puntuacion_banca and tu_puntuacion < 21:
+        print("Ganaste")
+
 
