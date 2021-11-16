@@ -27,6 +27,7 @@ def tomar_carta():
     print(f"Tienes esta carta: {carta_elegida}")
     Cartasquellevas.append(carta_elegida)
     numcartas-=1
+    print (Cartasquellevas)
 
 def tomar_2carta():
     global numcartas
@@ -79,12 +80,11 @@ def plantarse():
         print ("Perdiste")
     elif tu_puntuacion > puntuacion_banca and tu_puntuacion < 21:
         print("Ganaste")
-
 def juego():
     print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
     eleccion=int(input())
     if eleccion == 1:
-        tomar_carta()
+        print("Cojo carta")
     elif eleccion == 2:
         pasar_turno()
     elif eleccion == 3:
@@ -92,10 +92,12 @@ def juego():
     while eleccion != 3 or cartas!=0:
         if eleccion == 1:
             tomar_carta()
+            juego()
         elif eleccion == 2:
             pasar_turno()
-        elif eleccion == 3:
-            plantarse()
+            juego()
+    if eleccion == 3:
+        plantarse()
 
 print("Comienza el blackjack")
 tomar_2carta()
