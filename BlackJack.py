@@ -16,7 +16,7 @@ cartas = {
     10:chr(0x1f0ae), 
 }
 numcartas=52
-cartas=[11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+cartas=[11, 11, 11, 11, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10 ,10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
 Cartasquellevas=[]
 Cartasquellevabanca=[]
 numcartas=52
@@ -83,13 +83,19 @@ def plantarse():
 def juego():
     print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
     eleccion=int(input())
-    while eleccion != 3 or cartas :
+    if eleccion == 1:
         tomar_carta()
-        print(Cartasquellevas)
-    while eleccion == 2:
+    elif eleccion == 2:
         pasar_turno()
-    while eleccion ==3:
+    elif eleccion == 3:
         plantarse()
+    while eleccion != 3 or cartas!=0:
+        if eleccion == 1:
+            tomar_carta()
+        elif eleccion == 2:
+            pasar_turno()
+        elif eleccion == 3:
+            plantarse()
 
 print("Comienza el blackjack")
 tomar_2carta()
