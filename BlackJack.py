@@ -115,7 +115,7 @@ def juego():
             juego()
     if eleccion == 3:
         plantarse()
-    eleccion_banca=random.randint(4,25)
+    eleccion_banca=random.randint(4,5)
     if eleccion_banca == 4:
         if len(Cartasquellevabanca) == 3:
             cambiar_cartas_banca()
