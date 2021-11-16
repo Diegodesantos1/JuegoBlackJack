@@ -16,26 +16,20 @@ cartas = {
     10:chr(0x1f0ae), 
 }
 listacartas=[cartas]
-print(listacartas)
 def tomar_carta():
     global tu_puntuacion
     tu_puntuacion=0
     numerorandom= random.randint (2, 11)
     carta_elegida=cartas.pop(numerorandom)
     print(f"Tienes esta carta: {carta_elegida}")
-    num_cartas=+1
-    print(num_cartas)
-    print(tu_puntuacion)
+    tu_puntuacion=tu_puntuacion + numerorandom
+    print(f"LLevas {tu_puntuacion} puntos")
 
 def banca_tomar_carta():
     global puntuacion_banca
     puntuacion_banca=0
     numerorandom= random.randint (2, 11)
-    carta_elegida=cartas.pop(numerorandom)
-    print(f"Tienes esta carta: {carta_elegida}")
-    num_cartas=+ 1
-    print(num_cartas)
-    print(puntuacion_banca)
+    puntuacion_banca=puntuacion_banca + numerorandom
 
 def pasar_turno():
     print("Paso turno")
@@ -44,7 +38,7 @@ def plantarse():
     print ("Me planto")
     if puntuacion_banca > 21 and tu_puntuacion < 21:
         print ("Has ganado el blackjack")
-    elif tu_puntacion > 21:
+    elif tu_puntuacion > 21:
         print("Perdiste")
     elif tu_puntuacion < puntuacion_banca:
         print ("Perdiste")
@@ -52,11 +46,33 @@ def plantarse():
         print("Ganaste")
 
 print("Comienza el blackjack")
-
+#Primer turno
 tomar_carta()
 banca_tomar_carta()
 
-print ("¿Qué deseas hacer")+("1: tomar otra carta, 2: pasar turno, 3: plantarse")
+print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
+eleccion=int(input())
+if eleccion == 1:
+    tomar_carta()
+elif eleccion == 2:
+    pasar_turno()
+elif eleccion ==3:
+    plantarse()
+
+#Tercer turno
+print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
+eleccion=int(input())
+if eleccion == 1:
+    tomar_carta()
+elif eleccion == 2:
+    pasar_turno()
+elif eleccion ==3:
+    plantarse()
+
+tomar_carta()
+banca_tomar_carta()
+#Cuarto turno
+print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
 eleccion=int(input())
 if eleccion == 1:
     tomar_carta()
