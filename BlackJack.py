@@ -18,23 +18,25 @@ cartas = {
 cartas=[11, 11, 11, 11, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10 ,10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
 Cartasquellevas=[]
 Cartasquellevabanca=[]
-numcartas=52
+numcartas=20
 def comprobarcartas():
-    if cartas ==0:
-        print("Te has quedado sin cartas")
+    if numcartas ==0 or numcartas<0:
+        print("Se han terminado las cartas")
         plantarse()
 
 def tomar_carta():
-        global numcartas
-        numerorandom= random.randint (1, len(cartas))
-        carta_elegida=cartas.pop(numerorandom)
-        print(f"Tienes esta carta: {carta_elegida}")
-        Cartasquellevas.append(carta_elegida)
-        numcartas-=1
-        print(Cartasquellevas)
-
-def tomar_2carta():
+    comprobarcartas()
     global numcartas
+    numerorandom= random.randint (1, len(cartas))
+    carta_elegida=cartas.pop(numerorandom)
+    print(f"Tienes esta carta: {carta_elegida}")
+    Cartasquellevas.append(carta_elegida)
+    numcartas-=1
+    print(Cartasquellevas)
+
+def tomar_2carta():#No hace falta poner la función comprobarcartas, ya que es la que se ejecuta al inicio del programa
+    global numcartas
+    global carta_elegida
     numerorandom= random.randint (1, len(cartas))
     carta_elegida=cartas.pop(numerorandom)
     print(f"Tienes esta carta: {carta_elegida}")
@@ -46,22 +48,20 @@ def tomar_2carta():
     numcartas -= 2
 
 def banca_tomar_carta():
-    if cartas ==0:
-        print("Te has quedado sin cartas")
-        plantarse()
-    else:
-        global numcartas
-        numerorandom= random.randint (1, len(cartas))
-        carta_elegida_banca=cartas.pop(numerorandom)
-        Cartasquellevabanca.append(carta_elegida_banca)
-        numcartas-= 1
-
-def banca_tomar_2carta():
+    comprobarcartas()
+    global carta_elegida_banca
     global numcartas
     numerorandom= random.randint (1, len(cartas))
     carta_elegida_banca=cartas.pop(numerorandom)
     Cartasquellevabanca.append(carta_elegida_banca)
-    numerorandom= random.randint (2, 11)
+    numcartas-= 1
+
+def banca_tomar_2carta():#No hace falta poner la función comprobarcartas, ya que es la que se ejecuta al inicio del programa
+    global numcartas
+    numerorandom= random.randint (1, len(cartas))
+    carta_elegida_banca=cartas.pop(numerorandom)
+    Cartasquellevabanca.append(carta_elegida_banca)
+    numerorandom= random.randint (1, len(cartas))
     carta_elegida_banca=cartas.pop(numerorandom)
     Cartasquellevabanca.append(carta_elegida_banca)
     numcartas-=2
@@ -70,21 +70,19 @@ def cambiar_cartas():
     print("¿Qué carta quieres cambiar? Pon la posición 0, 1, 2 de la carta que desee eliminar")
     seleccion_cambio=int(input())
     Cartasquellevas.pop(seleccion_cambio)
-    tomar_carta()
-    juego()
+
 
 def cambiar_cartas_banca():
     seleccion_cambio=random.randint(0,2)
     Cartasquellevabanca.pop(seleccion_cambio)
-    banca_tomar_carta()
 
 def pasar_turno():
+    comprobarcartas()
     print("Paso turno")
 
 def plantarse():
     tu_puntuacion=sum(Cartasquellevas)
     puntuacion_banca=sum(Cartasquellevabanca)
-    print ("Me planto")
     if puntuacion_banca > 21 and tu_puntuacion < 21:
         print (f"Has ganado el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
     elif tu_puntuacion > 21:
@@ -96,7 +94,9 @@ def plantarse():
     elif tu_puntuacion == puntuacion_banca:
         print (f"Has empatado al blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
 
+
 def juegobanca():
+    comprobarcartas()
     eleccion_banca=random.randint(4,5)
     if eleccion_banca == 4:
         if len(Cartasquellevabanca) == 3:
@@ -108,24 +108,30 @@ def juegobanca():
         print("Ha pasado turno la banca")
 
 def juego():
+    comprobarcartas()
     print(f"Quedan {numcartas} cartas")
     print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
     eleccion=int(input())
     if eleccion == 1:
-        juegobanca()
+        print()
     elif eleccion == 2:
-        juegobanca()
+        print()
     elif eleccion == 3:
         plantarse()
-    while eleccion != 3 or cartas!=0:
+    while eleccion != 3:
         if eleccion == 1:
             if len(Cartasquellevas) == 3:
                 cambiar_cartas()
+                tomar_carta()
+                juegobanca()
+                juego()
             else:
                 tomar_carta()
+                juegobanca()
                 juego()
         elif eleccion == 2:
             pasar_turno()
+            juegobanca()
             juego()
 
 print("Comienza el blackjack")
