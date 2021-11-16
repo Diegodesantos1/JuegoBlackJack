@@ -17,19 +17,23 @@ cartas = {
 }
 listacartas=[cartas]
 print(listacartas)
-global tomar_carta
 def tomar_carta():
-    num_cartas=0
     tu_puntuacion=0
-    total = 21
-    global carta_elegida
     numerorandom= random.randint (2, 11)
     carta_elegida=cartas.pop(numerorandom)
     print(f"Tienes esta carta: {carta_elegida}")
     num_cartas=+1
     print(num_cartas)
     print(tu_puntuacion)
-tomar_carta()
+
+def banca_tomar_carta():
+    puntuacion_banca=0
+    numerorandom= random.randint (2, 11)
+    carta_elegida=cartas.pop(numerorandom)
+    print(f"Tienes esta carta: {carta_elegida}")
+    num_cartas=+ 1
+    print(num_cartas)
+    print(puntuacion_banca)
 
 def pasar_turno():
     print("Paso turno")
@@ -45,4 +49,16 @@ def plantarse():
     elif tu_puntuacion > puntuacion_banca and tu_puntuacion < 21:
         print("Ganaste")
 
+print("Comienza el blackjack")
 
+tomar_carta()
+banca_tomar_carta()
+
+print ("¿Qué deseas hacer")+("1: tomar otra carta, 2: pasar turno, 3: plantarse")
+eleccion=int(input())
+if eleccion == 1:
+    tomar_carta()
+elif eleccion == 2:
+    pasar_turno()
+elif eleccion ==3:
+    plantarse()
