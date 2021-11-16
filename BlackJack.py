@@ -96,14 +96,25 @@ def plantarse():
     elif tu_puntuacion == puntuacion_banca:
         print (f"Has empatado al blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
 
+def juegobanca():
+    eleccion_banca=random.randint(4,5)
+    if eleccion_banca == 4:
+        if len(Cartasquellevabanca) == 3:
+            cambiar_cartas_banca()
+        else:
+            banca_tomar_carta()
+            juego()
+    elif eleccion_banca == 5:
+        print("Ha pasado turno la banca")
+
 def juego():
     print(f"Quedan {numcartas} cartas")
     print ("¿Qué deseas hacer?" + " 1: tomar otra carta, 2: pasar turno, 3: plantarse")
     eleccion=int(input())
     if eleccion == 1:
-        print()
+        juegobanca()
     elif eleccion == 2:
-        print()
+        juegobanca()
     elif eleccion == 3:
         plantarse()
     while eleccion != 3 or cartas!=0:
@@ -116,15 +127,6 @@ def juego():
         elif eleccion == 2:
             pasar_turno()
             juego()
-    eleccion_banca=random.randint(4,5)
-    if eleccion_banca == 4:
-        if len(Cartasquellevabanca) == 3:
-            cambiar_cartas_banca()
-        else:
-            banca_tomar_carta()
-            juego()
-    elif eleccion_banca == 5:
-        print("Ha pasado turno la banca")
 
 print("Comienza el blackjack")
 tomar_2carta()
