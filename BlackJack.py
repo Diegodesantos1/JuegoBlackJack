@@ -1,5 +1,5 @@
 import random
-
+import sys
 cartas = { 
     11:chr(0x1f0a1), 
     2:chr(0x1f0a2), 
@@ -93,6 +93,7 @@ def plantarse():
         print (f"Has ganado el blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
     elif tu_puntuacion == puntuacion_banca:
         print (f"Has empatado al blackjack, tu puntuación ha sido {tu_puntuacion} y la banca ha tenido {puntuacion_banca} puntos")
+    sys.exit()
 
 
 def juegobanca():
