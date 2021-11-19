@@ -105,15 +105,18 @@ def plantarse():
 
 def juegobanca():
     comprobarcartas()
-    eleccion_banca=random.randint(4,5)
-    if eleccion_banca == 4:
-        if len(Cartasquellevabanca) == 3:
-            cambiar_cartas_banca()
-        else:
-            banca_tomar_carta()
-            juego()
-    elif eleccion_banca == 5:
-        print("Ha pasado turno la banca")
+    if sum(Cartasquellevabanca) >= 16:
+        plantarse()
+    else:
+        eleccion_banca=random.randint(4,5)
+        if eleccion_banca == 4:
+            if len(Cartasquellevabanca) == 3:
+                cambiar_cartas_banca()
+            else:
+                banca_tomar_carta()
+                juego()
+        elif eleccion_banca == 5:
+            print("Ha pasado turno la banca")
 
 def juego():
     comprobarcartas()
