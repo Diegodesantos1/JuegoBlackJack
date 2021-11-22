@@ -6,8 +6,12 @@ He creado un programa capaz de transformar el diccionario planteado en una lista
 
 El diagrama de flujo que he realizado para este código es:
 
+<br>
+<img height="780" src="https://github.com/Diegodesantos1/JuegoBlackJack/blob/main/FlowchartBlackjack.jpg" />
+<br>
 
-Para verlo más claro pincha aquí:
+
+Para verlo más claro pincha aquí: https://github.com/Diegodesantos1/JuegoBlackJack/blob/main/FlowchartBlackjack.jpg
 
 
 El código empleado para resolverlo es el siguiente:
