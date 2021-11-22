@@ -13,7 +13,7 @@ El diagrama de flujo que he realizado para este código es:
 
 Para verlo más claro pincha aquí: https://github.com/Diegodesantos1/JuegoBlackJack/blob/main/FlowchartBlackjack.jpg
 
-Debido a la complejidad del código, en el flowchart está basado en las funciones que he creado, no he especificado cada caso puntual, y además cada vez que se ejecuta la función juego también se ejecuta la función de comprobar cartas para ver si hay cartas para poder seguir jugando.
+
 
 
 
