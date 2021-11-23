@@ -1,6 +1,6 @@
 # JuegoBlackJack
 
-Mi dirección del repositorio es la siguiente: [Repositorio](https://github.com/Diegodesantos1/AdivineElNumero)
+Mi dirección del repositorio es la siguiente: [Repositorio](https://github.com/Diegodesantos1/JuegoBlackJack)
 
 He creado un programa capaz de transformar el diccionario planteado en una lista, y a partir de ahí operar con ella, creando el juego del blackjack, está hecho en base a un límite de 3 cartas, dónde en cada turno puedes coger otra carta y si tienes 3 cambiar, pasar turno o plantarse, de la misma forma, la banca tiene también hasta 3 cartas, puede cambiar cartas, puede pasar turno y puede plantarse siempre que tenga una puntuación mayor a 16.
 
