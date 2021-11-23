@@ -143,8 +143,15 @@ def juego():
             juegobanca()
             juego()
 
-print("Comienza el blackjack")
-tomar_2carta()
-banca_tomar_2carta()
-print(Cartasquellevas)
-juego()
+print("Comienza el blackjack, ¿Cuántos jugadores sois?")
+numjugadores= int(input())
+
+if numjugadores== 1:
+    tomar_2carta()
+    banca_tomar_2carta()
+    print(Cartasquellevas)
+    juego()
+elif numjugadores == 2:
+    #crear una clase para el segundo jugador y rehacer el código usando clases para así hacer más jugadores
+elif numjugadores == 3:
+    #Lo mismo que antes
