@@ -29,7 +29,7 @@ def comprobarcartas():
         print("Se han terminado las cartas")
         plantarse()
 
-def elegir_jugadores():
+def elegir_jugadores(): #crada función para implementar más jugadores (hecho en clase)
     nombres = []
     jugadores = int(input('¿Cuantos jugadores van a jugar?: '))
     for i in range(jugadores):
