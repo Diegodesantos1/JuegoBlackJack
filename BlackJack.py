@@ -29,6 +29,13 @@ def comprobarcartas():
         print("Se han terminado las cartas")
         plantarse()
 
+def elegir_jugadores():
+    nombres = []
+    jugadores = int(input('¿Cuantos jugadores van a jugar?: '))
+    for i in range(jugadores):
+        nombre = str(input('Nombre del jugador ' + str(i + 1)))
+        nombres.append(nombre)
+
 def tomar_carta():
     comprobarcartas()
     global numcartas
@@ -143,15 +150,8 @@ def juego():
             juegobanca()
             juego()
 
-print("Comienza el blackjack, ¿Cuántos jugadores sois?")
-numjugadores= int(input())
-
-if numjugadores== 1:
-    tomar_2carta()
-    banca_tomar_2carta()
-    print(Cartasquellevas)
-    juego()
-elif numjugadores == 2:
-    #crear una clase para el segundo jugador y rehacer el código usando clases para así hacer más jugadores
-elif numjugadores == 3:
-    #Lo mismo que antes
+print("Comienza el blackjack")
+tomar_2carta()
+banca_tomar_2carta()
+print(Cartasquellevas)
+juego()
